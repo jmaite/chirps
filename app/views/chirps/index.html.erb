@@ -1,9 +1,17 @@
 <html>
   <body>
   <h1>Chirps</h1>
+  <%= link_to 'Create a Chirp', new_chirp_path() %>
   <ul>
     <% @chirps.each do |chirp| %>
-    <li><%= chirp.id %>--<%= chirp.text %></li>
+    <li>
+      <%= chirp.id %>--<%= chirp.text %> --
+      <%= link_to 'Show', chirp_path(chirp) %> |
+      <%= link_to 'Edit', edit_chirp_path(chirp)%> |
+      <%= link_to 'Delete', chirp_path(chirp),
+          method: :delete,
+          data: { confirm: 'Are you sure?'} %>
+    </li>
     <% end %>
   </ul>
   </body>
