@@ -10,12 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_07_183113) do
+ActiveRecord::Schema.define(version: 2020_03_08_054724) do
 
   create_table "chirps", force: :cascade do |t|
     t.string "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_chirps_on_user_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "text"
+    t.integer "user_id", null: false
+    t.integer "chirp_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chirp_id"], name: "index_comments_on_chirp_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "chirps", "users"
+  add_foreign_key "comments", "chirps"
+  add_foreign_key "comments", "users"
 end
