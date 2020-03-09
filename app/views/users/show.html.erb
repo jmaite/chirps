@@ -1,0 +1,20 @@
+<h1>User</h1>
+
+<p><%= @user.name %></p>
+
+<p>
+  <%= link_to 'Main', users_path %> |
+  <%= link_to 'Edit', edit_user_path %>
+</p>
+
+<h2>Add a chirp:</h2>
+<%= form_with model: @chirp, local: true do |form| %>
+  <p>
+    <%= hidden_field_tag 'chirp[user_id]', @chirp.user_id%>
+    <%= form.label :text %>
+    <%= form.text_field :text %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

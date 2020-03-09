@@ -1,0 +1,18 @@
+<html>
+<body>
+<h1>Users</h1>
+<%= link_to 'Create New User', new_user_path() %>
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= user.id %>--<%= user.name %>
+      <%= link_to 'Show', user_path(user.id) %> |
+      <%= link_to 'Edit', edit_user_path(user.id) %> |
+      <%= link_to 'Delete', user_path(user),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?'}%>
+    </li>
+  <% end %>
+</ul>
+</body>
+</html>

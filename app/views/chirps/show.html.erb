@@ -2,4 +2,7 @@
 
 <p><%= @chirp.text %></p>
 
-<p><%= link_to 'Main', chirps_path %></p>
+<p>
+  <%= link_to 'Main', chirps_path %> |
+  <%= link_to 'Edit', edit_chirp_path %>
+</p>

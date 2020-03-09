@@ -44,6 +44,6 @@ class ChirpsController < ApplicationController
 
   private
   def chirp_params
-    params.require(:chirp).permit(:text)
+    params.require(:chirp).permit(:text, :user_id)
   end
 end
